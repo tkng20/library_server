@@ -29,7 +29,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="nav">
+            <!-- <ul class="nav">
         <li class="nav-item">
             <a class="nav-link active" href="{{route('book.index')}}">Index</a>
         </li>
@@ -37,7 +37,7 @@
             <a class="nav-link" href="{{route('book.create')}}">Create</a>
         </li>
 
-        </ul>
+        </ul> -->
     </div>
 </nav>
     <div class="container-fluid pt-5">

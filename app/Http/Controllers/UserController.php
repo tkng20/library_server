@@ -114,8 +114,36 @@ class UserController extends Controller
         $u = User::find($id);
         $book_borrow = array();
         foreach($u->borrow as $borrow){
+            if($borrow->status == "0"){
             $borrow->book;
             $book_borrow[]= $borrow;
+            }
+        }
+        return response()->json($book_borrow,200);
+    }
+
+    public function getbook1(Request $request,$id)
+    {
+        $u = User::find($id);
+        $book_borrow = array();
+        foreach($u->borrow as $borrow){
+            if($borrow->status == "1"){
+            $borrow->book;
+            $book_borrow[]= $borrow;
+            }
+        }
+        return response()->json($book_borrow,200);
+    }
+
+    public function getbook2(Request $request,$id)
+    {
+        $u = User::find($id);
+        $book_borrow = array();
+        foreach($u->borrow as $borrow){
+            if($borrow->status == "2"){
+            $borrow->book;
+            $book_borrow[]= $borrow;
+            }
         }
         return response()->json($book_borrow,200);
     }

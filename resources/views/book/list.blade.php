@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
-<h1 class="display-5 text-center text-uppercase mb-5">Hiển thị danh sách sách</h1>
+<h1 class="display-5 text-center text-uppercase mb-5">danh sách sách</h1>
 
 <table class="table">
   <thead class="thead-dark">

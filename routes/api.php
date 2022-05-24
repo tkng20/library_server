@@ -25,6 +25,8 @@ Route::get('show/{id}','UserController@show');
 Route::put('update/{user}','UserController@update');
 Route::put('updateavatar/{user}','UserController@updateavatar');
 Route::get('getbook/{id}','UserController@getbook');
+Route::get('getbook1/{id}','UserController@getbook1');
+Route::get('getbook2/{id}','UserController@getbook2');
 
 Route::resource('books', BookController::class);
 Route::resource('posts', PostController::class);

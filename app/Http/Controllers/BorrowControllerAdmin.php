@@ -13,8 +13,8 @@ class BorrowControllerAdmin extends Controller
      */
     public function index()
     {
-        $borrow = Borrow::all();
-        return view('borrow.index')->with('borrow',$borrow);
+        $borrows = Borrow::all();
+        return view('borrow.index')->with('borrows',$borrows);
     }
 
     /**
@@ -58,6 +58,9 @@ class BorrowControllerAdmin extends Controller
     public function edit($id)
     {
         //
+        $borrow = Borrow::find($id);
+        
+        return view('borrow.edit', compact('borrow','borrow'));
     }
 
     /**
@@ -70,6 +73,16 @@ class BorrowControllerAdmin extends Controller
     public function update(Request $request, $id)
     {
         //
+        $borrow = Borrow::findOrFail($id);
+       
+        $input =  $request->validate([
+            'date_return'=> 'required|date|after_or_equal:date_borrow',
+            'status'=> 'required',
+        ]);;
+
+        $borrow->fill($input)->save();
+
+        return redirect()->route('borrow.index');
     }
 
     /**
