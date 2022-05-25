@@ -29,5 +29,7 @@ Route::get('getbook1/{id}','UserController@getbook1');
 Route::get('getbook2/{id}','UserController@getbook2');
 
 Route::resource('books', BookController::class);
+Route::resource('book2s', Book2Controller::class);
 Route::resource('posts', PostController::class);
 Route::resource('borrows', BorrowController::class);
+Route::resource('categories', CategoriesController::class);

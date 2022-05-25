@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Favorite extends Model
+class Categories extends Model
 {
     //
     public $timestamps = false;
     protected $fillable = [
-        'user_id','book_id'
+        'tenTheLoai'
     ];
 
-    public function favorited(){
-        return $this->belongsToMany(User::class);
+    public function book(){
+        return $this->hasMany(Book::class);
     }
 }

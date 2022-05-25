@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFavoritesTable extends Migration
+class CreateBorrow2sTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,19 @@ class CreateFavoritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('borrow2s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('book_id');
+            $table->unsignedBigInteger('book2_id');
+            $table->date('date_borrow');
+            $table->date('date_return')->nullable();
+            $table->string('status')->nullable()->default(0);
 
             $table->index('user_id');
             $table->index('book_id');
 
             $table->foreign('book_id')->references('id')
-            ->on('books')
+            ->on('book2s')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
@@ -40,6 +43,6 @@ class CreateFavoritesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('borrow2s');
     }
 }

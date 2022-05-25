@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Borrow extends Model
 {
     //
-    // edit and save
+    
     public $timestamps = false;
     protected $fillable = [
         'user_id','book_id','status','date_borrow','date_return'

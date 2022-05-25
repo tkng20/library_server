@@ -16,10 +16,10 @@ class BookSeeder extends Seeder
         $limit = 50;
 
         for ($i = 0; $i < $limit; $i++){
-            DB::table('books')->insert([
+            DB::table('book2s')->insert([
                 'tenSach' => $fake->name,
                 'tacGia' => $fake->name,
-                'theLoai' => $fake->randomLetter,
+                'categories_id' => $fake->randomLetter,
                 'soLuong' => $fake->numerify($string = '##'),
                 'soTrang' => $fake->numerify($string = '##'),
                 'ngayXB' => $fake->date("Y-m-d"),

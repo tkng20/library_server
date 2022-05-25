@@ -1,27 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Book;
-use App\Book2;
+
+use App\Categories;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
-        $books = Book::all();
-        $book_cate = array();
-        foreach($books as $book){
-            $book->categories;
-            $book_cate[]= $book;
-        }
-        return response()->json($book_cate,200);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -32,17 +35,27 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $book = Book::create($request->all());
-        return response()->json($book,200);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(Categories $categories)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Categories  $categories
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Categories $categories)
     {
         //
     }
@@ -51,29 +64,22 @@ class BookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
+     * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Categories $categories)
     {
         //
-        $request->validate(['title'=> 'required','author'=> 'required',]);
-        $book->update($request->all());
-        return response()->json($book,200);
     }
-
-    
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(Categories $categories)
     {
         //
-        $book->delete();
-        return response()->json("success");
     }
 }

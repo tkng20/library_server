@@ -11,19 +11,24 @@ class CreateBooksTable extends Migration
      *
      * @return void
      */
-
-     
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('tenSach');
             $table->string('tacGia');
-            $table->string('theLoai');
+            $table->unsignedBigInteger('categories_id');
             $table->string('soLuong');
             $table->string('soTrang');
             $table->date('ngayXB');
             $table->string('moTa');
+
+            $table->index('categories_id');
+
+            $table->foreign('categories_id')->references('id')
+            ->on('categories')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

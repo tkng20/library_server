@@ -35,8 +35,8 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
-        $borrow = Borrow::create($request->all());
 
+        $borrow = Borrow::create($request->all());
         return response()->json($borrow,201);
     }
 
