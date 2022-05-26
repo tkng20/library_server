@@ -18,6 +18,7 @@
                       <th>Tên sách</th>
                       <th>Ngày mượn</th>
                       <th>Ngày trả</th>
+                      <th>Hạn trả</th>
                       <th>Trạng thái</th>
                       <th>Thao tác</th>
                     </tr>
@@ -29,11 +30,24 @@
                       <td>{{ $borrow->book->tenSach }}</td>
                       <td>{{ $borrow->date_borrow }}</td>
                       <td>{{ $borrow->date_return }}</td>
-                      <td class="text-danger">{{ $borrow->status }}</td>
+                      <td>{{ $borrow->return_expect }}</td>
+                      @if($borrow->status == "0")
+                      <td class="btn-danger">Mới đăng ký</td>
+                      @endif
+                      @if($borrow->status == "1")
+                      <td class="btn-success">Đang mượn</td>
+                      @endif
+                      @if($borrow->status == "2")
+                      <td class="btn-info">Đã trả</td>
+                      @endif
                       <td>
                       <div class="d-flex">
-                        <a href="{{route('borrow.show', $borrow->id)}}" class="btn btn-info m-1">Chi tiết</a>
-                        <a href="{{route('borrow.edit', $borrow->id)}}" class="btn btn-primary m-1">Sửa</a>
+                        @if($borrow->status =="2"& $borrow->date_return != null)
+                          <a href="{{route('borrow.show', $borrow->id)}}" class="btn btn-info m-1">Chi tiết</a>
+                        @else 
+                          <a href="{{route('borrow.show', $borrow->id)}}" class="btn btn-info m-1">Chi tiết</a>
+                          <a href="{{route('borrow.edit', $borrow->id)}}" class="btn btn-primary m-1">Sửa</a>
+                        @endif
                         </div>
                       </td>
                     </tr>

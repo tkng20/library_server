@@ -109,6 +109,8 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
+
+    // chờ xác nhận
     public function getbook(Request $request,$id)
     {
         $u = User::find($id);
@@ -122,12 +124,13 @@ class UserController extends Controller
         return response()->json($book_borrow,200);
     }
 
+    // đang mượn
     public function getbook1(Request $request,$id)
     {
         $u = User::find($id);
         $book_borrow = array();
         foreach($u->borrow as $borrow){
-            if($borrow->status == "1"){
+            if($borrow->status == "1" & $borrow->date_return == null){
             $borrow->book;
             $book_borrow[]= $borrow;
             }
@@ -135,12 +138,26 @@ class UserController extends Controller
         return response()->json($book_borrow,200);
     }
 
+    // đã mượn
     public function getbook2(Request $request,$id)
     {
         $u = User::find($id);
         $book_borrow = array();
         foreach($u->borrow as $borrow){
-            if($borrow->status == "2"){
+            if($borrow->status == "2" & $borrow->date_return != null & $borrow->return_expect != null ){
+            $borrow->book;
+            $book_borrow[]= $borrow;
+            }
+        }
+        return response()->json($book_borrow,200);
+    }
+// dự kiến
+    public function getbook3(Request $request,$id)
+    {
+        $u = User::find($id);
+        $book_borrow = array();
+        foreach($u->borrow as $borrow){
+            if($borrow->status == "1" & $borrow->return_expect != null){
             $borrow->book;
             $book_borrow[]= $borrow;
             }

@@ -19,6 +19,7 @@ class CreateBorrowsTable extends Migration
             $table->unsignedBigInteger('book_id');
             $table->date('date_borrow');
             $table->date('date_return')->nullable();
+            $table->date('return_expect')->nullable();
             $table->string('status')->nullable()->default(0);
 
             $table->index('user_id');

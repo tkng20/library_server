@@ -21,9 +21,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('/book', 'BookControllerAdmin');
 Route::resource('/borrow', 'BorrowControllerAdmin');

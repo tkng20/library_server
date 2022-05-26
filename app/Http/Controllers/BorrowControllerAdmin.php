@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Borrow;
+use App\Book;
 use Illuminate\Http\Request;
 
 class BorrowControllerAdmin extends Controller
@@ -76,11 +77,31 @@ class BorrowControllerAdmin extends Controller
         $borrow = Borrow::findOrFail($id);
        
         $input =  $request->validate([
-            'date_return'=> 'required|date|after_or_equal:date_borrow',
+            'date_return' => '',
+            'return_expect'=> 'required|date|after_or_equal:date_borrow',
             'status'=> 'required',
-        ]);;
+        ]);
 
         $borrow->fill($input)->save();
+
+        if($borrow->status == "1" & $borrow->date_return == null ){
+
+            $book = Book::findOrFail($borrow->book_id);
+
+            $countnew = $book->soLuong - 1;
+            
+            $book->soLuong = $countnew;
+            $book->save();
+        }
+
+        if($borrow->status == "2" & $borrow->date_return != null ){
+
+            $book = Book::findOrFail($borrow->book_id);
+            $countnew = $book->soLuong + 1;
+            
+            $book->soLuong = $countnew;
+            $book->save();
+        }
 
         return redirect()->route('borrow.index');
     }

@@ -26,6 +26,13 @@
         @enderror
         </div>
         <div class="form-group">
+          <label for="ngayXB" class="col-form-label">Hạn trả<span class="text-danger">*</span></label>
+          <input class="form-control" type="date" name="return_expect" value="{{ $borrow->return_expect }}">
+        @error('return_expect')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+        </div>
+        <div class="form-group">
         <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
             <option value="1" {{(($borrow->status=='1') ? 'selected' : '')}}>Đang mượn</option>

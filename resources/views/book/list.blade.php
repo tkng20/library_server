@@ -22,7 +22,7 @@
             <th scope="row">{{ $book->id }}</th>
             <td>{{ $book->tenSach }}</td>
             <td>{{ $book->tacGia }}</td>
-            <td>{{ $book->theLoai }}</td>
+            <td>{{ $book->categories->tenTheLoai }}</td>
             <td>{{ $book->soLuong }}</td>
             <td>{{ $book->soTrang }}</td>
             <td>{{ $book->ngayXB }}</td>

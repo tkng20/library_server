@@ -10,7 +10,7 @@ class Borrow extends Model
     
     public $timestamps = false;
     protected $fillable = [
-        'user_id','book_id','status','date_borrow','date_return'
+        'user_id','book_id','status','date_borrow','date_return','return_expect'
     ];
 
     public function book(){
