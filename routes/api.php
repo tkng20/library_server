@@ -28,8 +28,11 @@ Route::get('getbook/{id}','UserController@getbook');
 Route::get('getbook1/{id}','UserController@getbook1');
 Route::get('getbook2/{id}','UserController@getbook2');
 Route::get('getbook3/{id}','UserController@getbook3');
+Route::get('getfavorite/{id}','UserController@getfavorite');
 
-Route::resource('books', BookController::class);
-Route::resource('posts', PostController::class);
-Route::resource('borrows', BorrowController::class);
 Route::resource('categories', CategoriesController::class);
+Route::resource('books', BookController::class);
+Route::resource('borrows', BorrowController::class);
+Route::resource('favorites', FavoriteController::class);
+
+Route::resource('posts', PostController::class);

@@ -35,8 +35,14 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return user()->favorite();
+        $fav = Favorite::where([
+            'user_id' => $request->user_id,
+            'book_id' => $request->book_id,])->first();
+        if( $fav == null ){
+            $favorite = Favorite::create($request->all());
+            return response()->json($favorite,201);
+        }
+        else return response()->json("đã có",201);
     }
 
     /**
@@ -82,5 +88,7 @@ class FavoriteController extends Controller
     public function destroy(Favorite $favorite)
     {
         //
+        $favorite->delete();
+        return response()->json("success");
     }
 }

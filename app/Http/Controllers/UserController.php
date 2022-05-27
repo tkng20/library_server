@@ -165,6 +165,17 @@ class UserController extends Controller
         return response()->json($book_borrow,200);
     }
 
+    public function getfavorite(Request $request,$id)
+    {
+        $u = User::find($id);
+        $book_favorite = array();
+        foreach($u->favorite as $favorite){
+            $favorite->book;
+            $book_favorite[]= $favorite;
+        }
+        return response()->json($book_favorite,200);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

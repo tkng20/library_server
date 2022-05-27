@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function borrow(){
             return $this->hasMany(Borrow::class);
     }
+
+    public function favorite(){
+        return $this->hasMany(Favorite::class);
+    }
 }

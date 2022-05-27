@@ -35,8 +35,16 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
-        $borrow = Borrow::create($request->all());
-        return response()->json($borrow,201);
+
+        $br = Borrow::where([
+            'user_id' => $request->user_id,
+            'status' => "1",
+            'book_id' => $request->book_id,])->first();
+        if( $br == null ){
+            $borrow = Borrow::create($request->all());
+            return response()->json($borrow,201);
+        }
+        else return response()->json("dã có",201);
     }
 
     /**
