@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/book', 'BookControllerAdmin');
 Route::resource('/borrow', 'BorrowControllerAdmin');
+Route::resource('/category', 'CategoriesAdminController');
+Route::resource('/users', 'UserAdminController');

@@ -69,8 +69,8 @@
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="#">Danh sách độc giả</a>
-            <a class="collapse-item" href="#">...</a>
+            <a class="collapse-item" href="{{ route('users.index') }}">Danh sách độc giả</a>
+            <a class="collapse-item" href="{{ route('users.create') }}">Thêm độc giả</a>
           </div>
         </div>
       </li>
@@ -84,8 +84,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="#">Danh sách các thể loại</a>
-            <a class="collapse-item" href="#">Thêm thể loại</a>
+            <a class="collapse-item" href="{{ route('category.index') }}">Danh sách các thể loại</a>
+            <a class="collapse-item" href="{{ route('category.create') }}">Thêm thể loại</a>
           </div>
         </div>
       </li>
