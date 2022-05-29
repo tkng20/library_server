@@ -25,5 +25,13 @@ Route::resource('/book', 'BookControllerAdmin');
 Route::resource('/borrow', 'BorrowControllerAdmin');
 Route::resource('/category', 'CategoriesAdminController');
 Route::resource('/users', 'UserAdminController');
-
 Route::resource('/result', 'ResultController');
+
+//For adding an image
+Route::get('/add-image','PostController@addImage')->name('images.add');
+
+//For storing an image
+Route::post('/store-image','PostController@storeImage')->name('images.store');
+
+//For showing an image
+Route::get('/view-image','PostController@viewImage')->name('images.view');

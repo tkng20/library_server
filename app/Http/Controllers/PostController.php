@@ -94,4 +94,28 @@ class PostController extends Controller
         $post->delete();
         return response()->json("success");
     }
+
+        //Add image
+        public function addImage(){
+            return view('post.add_image');
+        }
+        //Store image
+        public function storeImage(Request $request){
+           /*Logic to store data*/
+           $data= new Post();
+
+           if($request->file('image')){
+               $file= $request->file('image');
+               $filename= date('YmdHi').$file->getClientOriginalName();
+               $file-> move(public_path('public/storage'), $filename);
+               $data['image']= $filename;
+           }
+           $data->save();
+           return redirect()->route('images.view');
+        }
+            //View image
+        public function viewImage(){
+            $imageData= Post::all();
+            return view('post.view_image', compact('imageData'));
+        }
 }
