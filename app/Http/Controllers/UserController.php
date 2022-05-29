@@ -86,6 +86,18 @@ class UserController extends Controller
         return response()->json($user,201);
     }
 
+    public function checkpassword(Request $request)
+    {
+        //
+        $auth =  $request->only(['email','password']);
+
+        if (Auth::attempt($auth)){
+            $user = Auth::user();
+            return response()->json("true",200);
+        }
+        return response()->json('fail');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -106,6 +118,14 @@ class UserController extends Controller
     public function updateavatar(Request $request,User $user)
     {
         $user->update($request->all());
+        return response()->json($user, 200);
+    }
+
+    public function updatepassword(Request $request,User $user)
+    {
+
+        $user->update(['password'=> Hash::make($request->password)]);
+
         return response()->json($user, 200);
     }
 

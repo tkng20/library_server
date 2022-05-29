@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Categories;
+
 use Illuminate\Http\Request;
 
-class CategoriesAdminController extends Controller
+class ResultController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class CategoriesAdminController extends Controller
      */
     public function index()
     {
-        $categories = Categories::paginate(10);;
-        return view('categories.index', compact('categories','categories'));
+        //
+        return view('result.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoriesAdminController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        //
     }
 
     /**
@@ -35,15 +35,7 @@ class CategoriesAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'tenTheLoai' => 'required|min:1|max:255',
-        ]);
-
-        $input = $request->all();
-
-        Categories::create($input);
-
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -54,8 +46,7 @@ class CategoriesAdminController extends Controller
      */
     public function show($id)
     {
-        // $categorie = Categories::findOrFail($id);
-        // return view('categories.show', compact('categorie','categorie'));
+        //
     }
 
     /**
@@ -66,9 +57,7 @@ class CategoriesAdminController extends Controller
      */
     public function edit($id)
     {
-        $category = Categories::find($id);
-        
-        return view('categories.edit', compact('category','category'));
+        //
     }
 
     /**
@@ -80,17 +69,7 @@ class CategoriesAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Categories::findOrFail($id);
-
-        $this->validate($request, [
-            'tenTheLoai' => 'required|min:1|max:255',
-        ]);
-
-        $input = $request->all();
-
-        $category->fill($input)->save();
-
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -101,10 +80,6 @@ class CategoriesAdminController extends Controller
      */
     public function destroy($id)
     {
-        $category = Categories::findOrFail($id);
-
-        $category->delete();
-        
-        return redirect()->route('category.index');
+        //
     }
 }

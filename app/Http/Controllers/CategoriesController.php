@@ -14,7 +14,22 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $cates = Categories::all();
+        $book_cate = array();
+        foreach($cates as $cate){
+            // if($cate->book != null){
+            //     $book_cate[]= $cate;
+            // }
+            
+                    // foreach($cate->book as $book){
+                    //     $book->categories;
+                    //     $book_cate[]= $book;
+
+                    // }
+            $cate->book;
+            $book_cate[]= $cate;
+        }
+        return response()->json($book_cate,200);
     }
 
     /**

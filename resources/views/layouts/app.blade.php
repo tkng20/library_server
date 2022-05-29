@@ -23,21 +23,11 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <a class="navbar-brand" href="{{asset('/')}}">AdminApp</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <!-- <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="{{route('book.index')}}">Index</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('book.create')}}">Create</a>
-        </li>
-
-        </ul> -->
     </div>
 </nav>
     <div class="container-fluid pt-5">
