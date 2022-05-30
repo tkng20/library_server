@@ -15,7 +15,7 @@
 
 {{Form::token()}}
 
-<form action="{{route('book.store')}}" method="post" class="mt-2">
+<form action="{{route('book.store')}}" method="post" enctype="multipart/form-data" class="mt-2">
     @csrf
     <div class="form-group">
     <label for="tenSach">
@@ -36,10 +36,13 @@
     
 
     <div class="form-group">
-    <label for="theLoai">
-    Thể loại:
-        <input class="form-control" type="text" name="theLoai">
-    </label>
+          <label for="cat_id">Category <span class="text-danger">*</span></label>
+          <select name="categories_id" id="cat_id" class="form-control">
+              <option value="">--Chọn thể loại--</option>
+              @foreach($categories as $key=>$cat_data)
+                  <option value='{{$cat_data->id}}'>{{$cat_data->tenTheLoai}}</option>
+              @endforeach
+          </select>
     </div>
     
 
@@ -72,6 +75,11 @@
     Mô tả:
         <input class="form-control" type="text" name="moTa">
     </label>
+    </div>
+
+    <div class="form-group">
+    <label>Ảnh bìa</label>
+      <input type="file" required name="image">
     </div>
     
     <button type="submit" class="btn btn-primary">Thêm sách</button>

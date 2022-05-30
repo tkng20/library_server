@@ -36,10 +36,13 @@
         @enderror
 
         <div class="form-group">
-        <label for="theLoai">
-        Thể loại:
-            <input class="form-control" type="text" name="theLoai" value="{{ $book->theLoai }}">
-        </label>
+          <label for="cat_id">Thể loại <span class="text-danger">*</span></label>
+          <select name="categories_id" id="cat_id" class="form-control">
+              <option value="">--Chọn thể loại--</option>
+              @foreach($categories as $key=>$cat_data)
+                  <option value='{{$cat_data->id}}' {{(($book->categories_id==$cat_data->id)? 'selected' : '')}}>{{$cat_data->tenTheLoai}}</option>
+              @endforeach
+          </select>
         </div>
         @error('theLoai')
             <span role="alert">
@@ -94,6 +97,7 @@
                 <p class="font-weight-light text-danger">{{ $message }}</p>
             </span>
         @enderror
+
     {{Form::submit('Cập nhật!', ['class' => 'btn btn-primary'])}}
     {{ Form::close() }}
 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 @section('content')
 <div class="container-fluid ml-5">
-    <h1 class="display-6">Book Details</h1>
+    <h1 class="display-6">Chi tiết sách</h1>
 
     <hr/>
 
@@ -13,7 +13,7 @@
         <dd>{{$book->tacGia}}</dd>
 
         <dt>Thể loại</dt>
-        <dd>{{$book->theLoai}}</dd>
+        <dd>{{$book->categories->tentheLoai}}</dd>
 
         <dt>Số lượng</dt>
         <dd>{{$book->soLuong}}</dd>

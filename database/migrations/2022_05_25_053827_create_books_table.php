@@ -22,6 +22,7 @@ class CreateBooksTable extends Migration
             $table->string('soTrang');
             $table->date('ngayXB');
             $table->string('moTa');
+            $table->string('image')->nullable();
 
             $table->index('categories_id');
 

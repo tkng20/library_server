@@ -9,7 +9,7 @@ class Book extends Model
     //
         public $timestamps = false;
         protected $fillable = [
-            'tenSach', 'tacGia','categories_id','soLuong','soTrang','ngayXB','moTa'
+            'tenSach', 'tacGia','categories_id','soLuong','soTrang','ngayXB','moTa','image'
         ];
     
         public function categories(){
