@@ -1,46 +1,64 @@
 @extends('layouts.app2')
 @section('content')
+<div class="container-fluid ml-5">
+<h2>Chỉnh sửa thông tin độc giả</h2>
 
-    <h1 class="display-6">Edit User</h1>
-
-    <hr/>
-    <!-- if validation in the controller fails, show the errors -->
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <!-- Open the form with the store function route. -->
-    {{ Form::open(['action' => ['UserController@update', $user->id], 'method' => 'put']) }}
+<!-- Open the form with the store function route. -->
+{{ Form::open(['action' => ['UserAdminController@update', $user->id], 'method' => 'put']) }}
     <!-- Include the CRSF token -->
     {{Form::token()}}
     <!-- build our form inputs -->
     <div class="form-group">
-        {{Form::label('first_name', 'First Name')}}
-        {{Form::text('first_name', $user->first_name, ['class' => 'form-control'])}}
-    </div>
-
-    <div class="form-group">
-        {{Form::label('last_name', 'Last Name')}}
-        {{Form::text('last_name', $user->last_name, ['class' => 'form-control'])}}
-    </div>
-
-    <div class="form-group">
-        {{Form::label('age', 'Age')}}
-        {{Form::number('age', $user->age, ['class' => 'form-control'])}}
-    </div>
-
-    <div class="form-group">
-        {{Form::label('email', 'E-Mail Address')}}
-        {{Form::text('email', $user->email, ['class' => 'form-control'])}}
-    </div>
-
-    {{Form::submit('Update!', ['class' => 'btn btn-primary'])}}
-    {{ Form::close() }}
+    <label for="name">
+        Tên độc giả:
+        <input class="form-control" type="text" name="name" class="form-control" value="{{ $user->name }}">
+    </label>
+    <div>
     
-@endsection
+    </div>
+    </div>
+
+    <div class="form-group">
+    <label for="email">
+    Email:
+        <input class="form-control" type="text" name="email" value="{{ $user->email }}">
+    </label>
+    </div>
+
+
+    <div class="form-group">
+    <label for="phone">
+    Số điện thoại:
+        <input class="form-control" type="text" name="phone" value="{{ $user->phone }}">
+    </label>
+    </div>
+
+    <div class="form-group">
+    <label for="gender">
+    <b>Giới tính:</b>
+        <br>
+        <input type="radio" id="nam" name="gender" value="Nam" {{ ($user->gender=="Nam")? "checked" : "" }}>
+        <label for="nam">Nam</label><br>
+        <input type="radio" id="nu" name="gender" value="Nữ" {{ ($user->gender=="Nữ")? "checked" : "" }}>
+        <label for="nu" >Nữ</label><br>
+    </label>
+    </div>
+
+    <!-- <div class="form-group">
+    <label>Ảnh đại diện</label>
+      <input type="file" required name="avatar">
+    </div> -->
+      
+
+    <div class="form-group">
+    <label for="birthday">
+    Ngày sinh:
+        <input class="form-control" type="date" name="birthday" value="{{ $user->birthday }}">
+    </label>
+    </div>
+
+
+    {{Form::submit('Cập nhật', ['class' => 'btn btn-danger'])}}
+    {{ Form::close() }}
+</div>
+    @endsection

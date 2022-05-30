@@ -1,11 +1,9 @@
 @extends('layouts.app2')
 @section('content')
-    <h1 class="display-6">Create New User</h1>
+<div class="container-fluid ml-5">
+<h2>Thêm độc giả</h2>
 
-    <hr/>
-
-    <!-- if validation in the controller fails, show the errors -->
-    @if ($errors->any())
+ @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -13,37 +11,68 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+@endif
 
-    <!-- Open the form with the store function route. -->
-    {{ Form::open(['action' => 'UserAdminController@store']) }}
+{{Form::token()}}
 
-    <!-- Include the CRSF token -->
-    {{Form::token()}}
-
+<form action="{{route('users.store')}}" method="post" enctype="multipart/form-data" class="mt-2">
+    @csrf
+    <div class="form-group">
+    <label for="name">
+        Tên độc giả:
+        <input class="form-control" type="text" name="name" class="form-control">
+    </label>
+    <div>
     
-    <!-- build our form inputs -->
-    <div class="form-group">
-        {{Form::label('first_name', 'First Name')}}
-        {{Form::text('first_name', '', ['class' => 'form-control'])}}
+    </div>
     </div>
 
     <div class="form-group">
-        {{Form::label('last_name', 'Last Name')}}
-        {{Form::text('last_name', '', ['class' => 'form-control'])}}
+    <label for="email">
+    Email:
+        <input class="form-control" type="text" name="email">
+    </label>
     </div>
 
     <div class="form-group">
-        {{Form::label('age', 'Age')}}
-        {{Form::number('age', '', ['class' => 'form-control'])}}
+    <label for="password">
+    Mật khẩu:
+        <input class="form-control" type="text" name="password">
+    </label>
     </div>
 
     <div class="form-group">
-        {{Form::label('email', 'E-Mail Address')}}
-        {{Form::text('email', '', ['class' => 'form-control'])}}
+    <label for="phone">
+    Số điện thoại:
+        <input class="form-control" type="text" name="phone">
+    </label>
     </div>
-    <!-- build the submission button -->
-    {{Form::submit('Create!', ['class' => 'btn btn-primary'])}}
-    {{ Form::close() }}
 
+    <div class="form-group">
+    <label for="gender">
+    <b>Giới tính:</b>
+        <br>
+        <input type="radio" id="nam" name="gender" value="Nam">
+        <label for="nam">Nam</label><br>
+        <input type="radio" id="nu" name="gender" value="Nữ">
+        <label for="nu" >Nữ</label><br>
+    </label>
+    </div>
+
+    <div class="form-group">
+    <label>Ảnh đại diện</label>
+      <input type="file" required name="avatar">
+    </div>
+      
+
+    <div class="form-group">
+    <label for="birthday">
+    Ngày sinh:
+        <input class="form-control" type="date" name="birthday">
+    </label>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Thêm độc giả</button>
+</form>
+</div>
 @endsection

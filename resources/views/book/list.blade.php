@@ -1,13 +1,40 @@
 @extends('layouts.app2')
 @section('content')
-<h1 class="display-5 text-center text-uppercase mb-5">danh sách sách</h1>
+<style>
+  .card-header{
+    border-bottom: 0px solid #e3e6f0 !important; 
+
+  }
+  .float-right{
+    margin-bottom: 12px !important;
+    padding: 10px  !important;
+  }
+  /* tr{
+    background-color: #4e73df;
+  color: white;
+  } */
+  .table .thead-dark th{
+    background-color: #4e73df;
+  color: white;
+  border-color: 0px #4e73df !important;
+  }
+  tr:hover {background-color: #c7d2f1;}
+
+  .btn-info {
+    color: #fff;
+    background-color: #fac338;
+    border-color: #fac338;
+    border-color: #f8f9fc;
+  }
+</style>
+<h1 class="display-5 text-center">Danh sách sách</h1>
 
 <div class="card-header">
       <a href="{{route('book.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Thêm sách"><i class="fas fa-plus"></i> Thêm sách</a>
 </div>
 <table class="table">
   <thead class="thead-dark">
-    <tr>
+    <tr style="background-color: #4e73df;">
         <th scope="col" style="width: 1%">ID</th>
         <th scope="col" style="width: 15%">Tên sách</th>
         <th scope="col" style="width: 12%">Tác giả</th>
@@ -17,6 +44,7 @@
         <th scope="col" style="width: 20%">Ngày XB</th>
         <th scope="col" style="width: 32%">Ảnh</td>
         <th scope="col" style="width: 20%">Thao tác</td>
+        <td></td>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +69,7 @@
                         @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$book->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
-                    </div>
+            </div>
             <td>
         </tr>
     @endforeach

@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 @section('content')
 <div class="container-fluid ml-5">
-<h2>THÊM SÁCH</h2>
+<h2>Thêm sách</h2>
 
  @if ($errors->any())
         <div class="alert alert-danger">
@@ -36,8 +36,8 @@
     
 
     <div class="form-group">
-          <label for="cat_id">Category <span class="text-danger">*</span></label>
-          <select name="categories_id" id="cat_id" class="form-control">
+          <label for="cat_id">Thể loại <span class="text-danger">*</span></label>
+          <select name="categories_id" id="cat_id" class="form-control col-4">
               <option value="">--Chọn thể loại--</option>
               @foreach($categories as $key=>$cat_data)
                   <option value='{{$cat_data->id}}'>{{$cat_data->tenTheLoai}}</option>

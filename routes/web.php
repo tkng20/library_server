@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/', 'DashBoardAdimController@index');
 
 Auth::routes();
 
@@ -26,6 +24,7 @@ Route::resource('/borrow', 'BorrowControllerAdmin');
 Route::resource('/category', 'CategoriesAdminController');
 Route::resource('/users', 'UserAdminController');
 Route::resource('/result', 'ResultController');
+Route::resource('/dashboard', 'DashBoardAdimController');
 
 //For adding an image
 Route::get('/add-image','PostController@addImage')->name('images.add');

@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+use App\Book;
+use App\Borrow;
+use App\Categories;
 use Illuminate\Http\Request;
-
-class UserAdminController extends Controller
+Use \Carbon\Carbon;
+class DashBoardAdimController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +16,27 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.index', compact('users','users'));
+        $books = Book::all();
+        $categories=Categories::get();
+
+        $current_date = Carbon::now()->format('Y-m-d');
+        $current_month = Carbon::now()->month;
+        $current_year = Carbon::now()->year; 
+
+        $pending_request = Borrow::where('status','0')->count();
+        $borrowed_by_day = Borrow::where('status','1')->where('date_borrow',$current_date)->count();
+        $borrowed_by_month = Borrow::where('status','1')->whereYear('date_borrow', '=', $current_year)
+        ->whereMonth('date_borrow', '=', $current_month)->count();
+        $borrowed_by_year = Borrow::where('status','1')->whereYear('date_borrow', '=', $current_year)->count();
+
+        return view('dashboard',[
+            'borrowed_by_day'=>$borrowed_by_day,
+            'borrowed_by_month'=>$borrowed_by_month,
+            'borrowed_by_year'=>$borrowed_by_year,
+            'pending_request'=>$pending_request,
+            'categories'=>$categories,
+            'books'=>$books,
+        ]);
     }
 
     /**
@@ -24,7 +46,7 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        //
     }
 
     /**
@@ -35,21 +57,7 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|numeric',
-            'phone' => 'required',
-            'name' => 'required',
-            'gender' => 'required',
-            'birthday' => 'required|date|before:-12 years'
-        ]);
-
-        $input = $request->all();
-
-        User::create($input);
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -60,8 +68,7 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.show', compact('user','user'));
+        //
     }
 
     /**
@@ -72,9 +79,7 @@ class UserAdminController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        
-        return view('users.edit', compact('user','user'));
+        //
     }
 
     /**
@@ -86,20 +91,7 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'age' => 'required|numeric',
-            'email' => 'required|email',
-        ]);
-
-        $input = $request->all();
-
-        $user->fill($input)->save();
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -110,10 +102,6 @@ class UserAdminController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-
-        $user->delete();
-        
-        return redirect()->route('users.index');
+        //
     }
 }

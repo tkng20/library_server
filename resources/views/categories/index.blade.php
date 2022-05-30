@@ -1,35 +1,32 @@
 @extends('layouts.app2')
 @section('content')
-<h1 class="display-5 text-center text-uppercase mb-5">Danh sách thể loại</h1>
+<style>
+  .card-header{
+    border-bottom: 0px solid #e3e6f0 !important; 
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-        <th scope="col" style="width: 20%">Thể loại</th>
-        <th scope="col" style="width: 20%">Hành động</th>
-    </tr>
-  </thead>
-  <tbody>
+  }
+  .float-right{
+    margin-bottom: 12px !important;
+    padding: 10px  !important;
+  }
+  .row{
+    margin-top: 25px;
+  }
+</style>
+<h1 class="display-5 text-center">Danh sách thể loại</h1>
+<div class="card-header">
+      <a href="{{route('category.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Thêm sách"><i class="fas fa-plus"></i> Thêm thể loại</a>
+    </div>
+<div class="row">
     @foreach($categories as $category)
-        <tr>
-            <th scope="row">{{ $category->tenTheLoai }}</th>
-            <td>
-            <div class="d-flex">
-                        <a href="{{route('category.edit', $category->id)}}" class="btn btn-primary m-1">Sửa</a>
-
-                        <form action="{{ route('category.destroy', $category->id) }}" method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <button class="btn btn-danger m-1">Xoá</button>
-                        </form>
-                    </div>
-            <td>
-        </tr>
+    <div class="col-6 col-xl-4 col-xxl-2 col-lg-6 mt-4">
+    <div class="card">
+      <div class="card-body" style = "border-left: .25rem solid #799ee0">
+        <h5 class="card-title">{{ $category->tenTheLoai }}</h5>
+        <a href="{{route('category.edit', $category->id)}}" class="btn btn-dark">   Sửa   </a>
+      </div>
+    </div>
+    </div>
     @endforeach
-  </tbody>
-</table>
-
-<div>
-  {{$categories->links()}}
 </div>
 @endsection

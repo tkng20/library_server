@@ -35,7 +35,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/test/public/">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.index') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -47,7 +47,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/test/public/">
+        <a class="nav-link" href="{{ route('dashboard.index') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -63,12 +63,12 @@
       <!-- Nav Item - Pages Collapse Menu Quản lí độc giả-->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        <i class="fa-solid fa-books"></i>
+        <i class="fas fa-user"></i>
           <span>Quản lí độc giả</span>
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
+            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{ route('users.index') }}">Danh sách độc giả</a>
             <a class="collapse-item" href="{{ route('users.create') }}">Thêm độc giả</a>
           </div>
@@ -78,12 +78,12 @@
             <!-- Nav Item - Pages Collapse Menu Quản lí danh mục sách-->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fa-solid fa-books"></i>
+        <i class="fas fa-list-ul"></i>
           <span>Quản lí thể loại</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
+            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{ route('category.index') }}">Danh sách các thể loại</a>
             <a class="collapse-item" href="{{ route('category.create') }}">Thêm thể loại</a>
           </div>
@@ -93,12 +93,12 @@
             <!-- Nav Item - Pages Collapse Menu  quản lí sách-->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-        <i class="fa-solid fa-books"></i>
+        <i class="fas fa-book"></i>
           <span>Quản lí sách</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
+            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <!-- <a class="collapse-item" href="#">Xem sách</a> -->
             <a class="collapse-item" href="{{ route('book.index') }}">Xem sách</a>
             <a class="collapse-item" href="{{ route('book.create') }}">Thêm sách</a>
@@ -109,12 +109,12 @@
                   <!-- Nav Item - Pages Collapse Menu quản lí mượn-->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-        <i class="fa-solid fa-books"></i>
+        <i class="fas fa-id-card"></i>
           <span>Quản lí mượn</span>
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
+            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{ route('borrow.index') }}">Danh sách mượn</a>
             <a class="collapse-item" href="#">...</a>
           </div>
@@ -339,13 +339,13 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <!-- <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; My Website 2020</span>
           </div>
         </div>
-      </footer>
+      </footer> -->
       <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->

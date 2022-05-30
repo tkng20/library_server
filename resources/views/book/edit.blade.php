@@ -1,7 +1,8 @@
 @extends('layouts.app2')
 @section('content')
+
 <div class="container-fluid ml-5">
-<h2>SỬA SÁCH</h2>
+<h2>Chỉnh sửa thông tin sách</h2>
 
 <!-- Open the form with the store function route. -->
 {{ Form::open(['action' => ['BookControllerAdmin@update', $book->id], 'method' => 'put']) }}
@@ -98,7 +99,7 @@
             </span>
         @enderror
 
-    {{Form::submit('Cập nhật!', ['class' => 'btn btn-primary'])}}
+    {{Form::submit('Cập nhật', ['class' => 'btn btn-danger'])}}
     {{ Form::close() }}
 </div>
     @endsection

@@ -42,8 +42,8 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        <div class="form-group mb-3">
-           <button class="btn btn-success" type="submit">Update</button>
+        <div class="form-group mb-3" style="    text-align: center;">
+           <button class="btn btn-danger" type="submit">Cập nhật</button>
         </div>
       </form>
     </div>

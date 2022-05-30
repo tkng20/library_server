@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 @section('content')
 <div class="container-fluid ml-5">
-<h2>THÊM THỂ LOẠI</h2>
+<h2>Thêm thể loại</h2>
 
  @if ($errors->any())
         <div class="alert alert-danger">
