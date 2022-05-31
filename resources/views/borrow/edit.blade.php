@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 @section('content')
 <div class="card">
-    <h5 class="card-header">Cập nhật tình trạng mượn</h5>
+    <h5 class="card-header">Cập nhật tình trạng mượn sách</h5>
     <div class="card-body">
       <form method="post" action="{{route('borrow.update',$borrow->id)}}">
         @csrf 

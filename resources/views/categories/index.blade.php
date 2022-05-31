@@ -12,6 +12,9 @@
   .row{
     margin-top: 25px;
   }
+  .card-title{
+color: #4e73df;
+  }
 </style>
 <h1 class="display-5 text-center">Danh sách thể loại</h1>
 <div class="card-header">
@@ -23,7 +26,7 @@
     <div class="card">
       <div class="card-body" style = "border-left: .25rem solid #799ee0">
         <h5 class="card-title">{{ $category->tenTheLoai }}</h5>
-        <a href="{{route('category.edit', $category->id)}}" class="btn btn-dark">   Sửa   </a>
+        <a href="{{route('category.edit', $category->id)}}" class="btn btn-info">   Sửa   </a>
       </div>
     </div>
     </div>

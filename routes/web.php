@@ -26,6 +26,8 @@ Route::resource('/users', 'UserAdminController');
 Route::resource('/result', 'ResultController');
 Route::resource('/dashboard', 'DashBoardAdimController');
 
+Route::get('/borrow2','DashBoardAdimController@index2')->name('borrow2');;
+
 //For adding an image
 Route::get('/add-image','PostController@addImage')->name('images.add');
 

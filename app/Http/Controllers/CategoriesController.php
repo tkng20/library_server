@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Categories;
+use App\Book;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -16,16 +17,10 @@ class CategoriesController extends Controller
     {
         $cates = Categories::all();
         $book_cate = array();
-        foreach($cates as $cate){
-            // if($cate->book != null){
-            //     $book_cate[]= $cate;
-            // }
-            
-                    // foreach($cate->book as $book){
-                    //     $book->categories;
-                    //     $book_cate[]= $book;
-
-                    // }
+        foreach($cates as $cate){            
+            foreach($cate->book as $book){
+                $book->categories;
+            }
             $cate->book;
             $book_cate[]= $cate;
         }

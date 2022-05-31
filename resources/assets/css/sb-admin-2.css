@@ -1517,7 +1517,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #858796;
+  color: #3f4043;
 }
 
 .table th,
@@ -1765,7 +1765,7 @@ pre code {
 .table .thead-dark th {
   color: #fff;
   background-color: #5a5c69;
-  border-color: #6c6e7e;
+  /* border-color: #ffffff; */
 }
 
 .table .thead-light th {
@@ -1782,7 +1782,7 @@ pre code {
 .table-dark th,
 .table-dark td,
 .table-dark thead th {
-  border-color: #6c6e7e;
+  /* border-color: #ffffff; */
 }
 
 .table-dark.table-bordered {

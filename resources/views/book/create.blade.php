@@ -73,12 +73,13 @@
     <div class="form-group">
     <label for="moTa">
     Mô tả:
-        <input class="form-control" type="text" name="moTa">
+        <textarea class="form-control" rows="10" cols="100" name="moTa" form="usrform" spellcheck="false"></textarea>
     </label>
     </div>
 
     <div class="form-group">
     <label>Ảnh bìa</label>
+    <br>
       <input type="file" required name="image">
     </div>
     

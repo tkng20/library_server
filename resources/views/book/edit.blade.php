@@ -90,7 +90,7 @@
         <div class="form-group">
         <label for="moTa">
         Mô tả:
-            <input class="form-control" type="text" name="moTa" value="{{ $book->moTa }}">
+             <textarea class="form-control" rows="4" cols="100" name="moTa" form="usrform" value="{{ $book->moTa }} spellcheck="false"">
         </label>
         </div>
         @error('moTa')

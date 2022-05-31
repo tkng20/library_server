@@ -15,8 +15,10 @@
   } */
   .table .thead-dark th{
     background-color: #4e73df;
-  color: white;
-  border-color: 0px #4e73df !important;
+    color: white;
+  }
+  .table{
+    color: #4b4b4e !important;
   }
   tr:hover {background-color: #c7d2f1;}
 
@@ -24,15 +26,25 @@
     color: #fff;
     background-color: #fac338;
     border-color: #fac338;
-    border-color: #f8f9fc;
+  }
+  .btn-info:hover{
+    color: #fff;
+    background-color:    #eab42b;
+    border-color:   #eab42b;
+  }
+  .table .thead-dark th{
+    border-color: #ffffff;
   }
 </style>
-<h1 class="display-5 text-center">Danh sách sách</h1>
-
+<h1 class="display-6">Danh sách sách</h1>
+<div class="card shadow mb-4">
 <div class="card-header">
       <a href="{{route('book.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Thêm sách"><i class="fas fa-plus"></i> Thêm sách</a>
 </div>
-<table class="table">
+
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
   <thead class="thead-dark">
     <tr style="background-color: #4e73df;">
         <th scope="col" style="width: 1%">ID</th>
@@ -75,12 +87,14 @@
     @endforeach
   </tbody>
 </table>
-
-<div>
-  {{$books->links()}}
+</div>
+</div>
 </div>
 @endsection
 @push('scripts')
+<script src="http://3.0.59.80/test/resources/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="http://3.0.59.80/test/resources/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="http://3.0.59.80/test/resources/assets/js/demo/datatables-demo.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   <script>
       $(document).ready(function(){

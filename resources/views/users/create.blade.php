@@ -37,7 +37,8 @@
     <div class="form-group">
     <label for="password">
     Mật khẩu:
-        <input class="form-control" type="text" name="password">
+        <input class="form-control" type="password" name="password" id="pw">
+        <input type="checkbox" id="show_hide_password" class="mt-3 mr-2">Hiện mật khẩu
     </label>
     </div>
 
@@ -76,3 +77,26 @@
 </form>
 </div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+   function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+    }
+
+    $(document).ready(function() {
+    $("#show_hide_password").on('change', function(event) {
+        event.preventDefault();
+        if(!this.checked){
+            $('#pw').attr('type', 'password');
+        }else if(this.checked){
+            $('#pw').attr('type', 'text');
+        }
+    });
+});
+</script>
+@endpush

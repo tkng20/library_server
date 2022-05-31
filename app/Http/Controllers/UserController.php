@@ -190,7 +190,7 @@ class UserController extends Controller
         $u = User::find($id);
         $book_favorite = array();
         foreach($u->favorite as $favorite){
-            $favorite->book;
+            $favorite->book->categories;
             $book_favorite[]= $favorite;
         }
         return response()->json($book_favorite,200);
