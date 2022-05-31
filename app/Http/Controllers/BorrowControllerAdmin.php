@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Borrow;
 use App\Book;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class BorrowControllerAdmin extends Controller
 {
@@ -14,7 +15,10 @@ class BorrowControllerAdmin extends Controller
      */
     public function index()
     {
-        $borrows = Borrow::all();
+        // $borrows = Borrow::all();
+        $borrows = Borrow::orderBy('date_borrow', 'desc')
+        ->orderBy('date_return', 'asc')
+        ->get();
         return view('borrow.index')->with('borrows',$borrows);
     }
 
@@ -26,6 +30,7 @@ class BorrowControllerAdmin extends Controller
     public function create()
     {
         //
+        return view('borrow.create');
     }
 
     /**
@@ -115,5 +120,10 @@ class BorrowControllerAdmin extends Controller
     public function destroy($id)
     {
         //
+        $borrow = Borrow::findOrFail($id);
+
+        $borrow->delete();
+
+        return redirect()->route('borrow.index');
     }
 }

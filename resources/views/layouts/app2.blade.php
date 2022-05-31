@@ -116,7 +116,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{ route('borrow.index') }}">Danh sách mượn</a>
-            <a class="collapse-item" href="#">...</a>
+            <a class="collapse-item" href="{{ route('borrow.create') }}">Thêm chi tiết mượn</a>
           </div>
         </div>
       </li>

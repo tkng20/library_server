@@ -27,6 +27,9 @@ text-align:right;
             <!-- <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
             </div> -->
+            <div class="card-header">
+      <a href="{{route('borrow.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Thêm sách"><i class="fas fa-plus"></i> Thêm chi tiết</a>
+</div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -61,11 +64,16 @@ text-align:right;
                       <td>
                       <div class="d-flex" style="padding = 0px">
                         @if($borrow->status =="2"& $borrow->date_return != null)
-                          <a href="{{route('borrow.show', $borrow->id)}}" class="btn btn-info btn-sm float-left mr-1" data-toggle="tooltip" title="detail" style="height:30px; width:30px;border-radius:50%"><i class="fas fa-eye"></i></a>
-                        @else 
-                          <!-- <a href="{{route('borrow.show', $borrow->id)}}" class="btn btn-info m-1">Chi tiết</a> -->
+                          <a href="{{route('borrow.show', $borrow->id)}}" class="btn btn-success btn-sm float-left mr-1" data-toggle="tooltip" title="detail" style="height:30px; width:30px;border-radius:50%"><i class="fas fa-eye"></i></a>
+                        @elseif($borrow->status =="0")
+                        <form method="POST" action="{{route('borrow.destroy', $borrow->id)}}">
+                        @csrf 
+                        @method('delete')
+                          <button class="btn btn-danger btn-sm float-left mr-1 dltBtn" data-id={{$borrow->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                        </form>
                           <a href="{{route('borrow.edit', $borrow->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
-                          
+                        @else
+                          <a href="{{route('borrow.edit', $borrow->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                         @endif
                         </div>
                       </td>
@@ -81,4 +89,34 @@ text-align:right;
 <script src="http://3.0.59.80/test/resources/assets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="http://3.0.59.80/test/resources/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="http://3.0.59.80/test/resources/assets/js/demo/datatables-demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script>
+      $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+          $('.dltBtn').click(function(e){
+            var form=$(this).closest('form');
+              var dataID=$(this).data('id');
+              // alert(dataID);
+              e.preventDefault();
+              swal({
+                    title: "Bạn có muốn xóa?",
+                    text: "Khi xóa bạn sẽ không thể hồi phục lại dữ liệu",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                       form.submit();
+                    } else {
+                        swal("Dữ liệu của bạn vẫn an toàn!");
+                    }
+                });
+          })
+      })
+  </script>
 @endpush

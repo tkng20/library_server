@@ -157,7 +157,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <div id="curve_chart" style="width: 900px; height: 300px"></div>
                   </div>
                 </div>
               </div>
@@ -306,7 +306,6 @@
                 <div class="card-body">
                   <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
                   <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>               
-                  <p>{{json_encode($books)}}</p>
                 </div>
               </div>
 
@@ -353,6 +352,37 @@ entries.unshift(['Categories', 'Number Of Books']);
         chart.draw(data, options);
       }
   </script>
+  <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      var count_t9 =  <?php echo json_encode($borrowed_by_day); ?>;
+
+    console.log(count_t2);
+ 
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Ngày trong tuần', 'Lượt mượn sách'],
+          ['Monday',  1],
+          ['Tuesday',  2],
+          ['Wednesday',  3],
+          ['Thursday',  4],
+          ['Friday',  5],
+          ['Saturday',  6],
+          ['Sunday',  7]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 @endpush
 
 

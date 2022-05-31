@@ -39,7 +39,13 @@ class BorrowController extends Controller
         $br = Borrow::where([
             'user_id' => $request->user_id,
             'status' => "1",
-            'book_id' => $request->book_id,])->first();
+            'book_id' => $request->book_id,])
+            // ->orWhere('status', '0')
+            // // ->orWhere([
+            // //     'user_id' => $request->user_id,
+            // //     'status' => "1",
+            // //     'book_id' => $request->book_id,])
+            ->first();
         if( $br == null ){
             $borrow = Borrow::create($request->all());
             return response()->json($borrow,201);

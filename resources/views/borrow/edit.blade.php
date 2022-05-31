@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
           <label for="ngayXB" class="col-form-label">Hạn trả<span class="text-danger">*</span></label>
-          <input class="form-control" type="date" name="return_expect" value="{{ $borrow->return_expect }}">
+          <input class="form-control" type="date" name="return_expect" value="{{ $borrow->return_expect}}" id ="dateDefault">
         @error('return_expect')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -49,3 +49,28 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+  function setInputDate(_id){
+    var _dat = document.querySelector(_id);
+    var hoy = new Date({!! json_encode($borrow->date_borrow) !!}),
+        d = hoy.getDate(),
+        m = hoy.getMonth()+4, 
+        y = hoy.getFullYear(),
+        data;
+
+    if(d < 10){
+        d = "0"+d;
+    };
+    if(m < 10){
+        m = "0"+m;
+    };
+
+    data = y+"-"+m+"-"+d;
+    console.log(data);
+    _dat.value = data;
+};
+setInputDate("#dateDefault");
+</script>
+@endpush
