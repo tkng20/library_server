@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -16,6 +18,33 @@ class AdminController extends Controller
         //
     }
 
+    public function showLoginForm()
+    {
+        //
+        return view('admin.login');
+    }
+
+
+    public function login(Request $request)
+    {
+        if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect()->route('admin');
+        }
+        return redirect()->back()->withInput();
+      
+    }
+
+    public function logout(Request $request )
+    {
+
+        Auth::guard('admin')->logout();
+ 
+        $request->session()->invalidate();
+     
+        $request->session()->regenerateToken();
+     
+        return redirect('/');
+    }
     /**
      * Show the form for creating a new resource.
      *
