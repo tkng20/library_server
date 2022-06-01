@@ -59,11 +59,6 @@
         <label for="nu" >Nữ</label><br>
     </label>
     </div>
-
-    <div class="form-group">
-    <label>Ảnh đại diện</label>
-      <input type="file" name="avatar">
-    </div>
       
     <div class="form-group">
     <label for="birthday">

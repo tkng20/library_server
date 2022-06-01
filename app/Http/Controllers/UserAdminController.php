@@ -16,16 +16,6 @@ class UserAdminController extends Controller
     {
         $users = User::paginate(10);
 
-        // $file = base64_decode($request['avatar']);
-        //     $folderName = 'public/storage';
-        //     $safeName = str_random(10).'.'.'png';
-        //     $destinationPath = public_path() . $folderName;
-        //     file_put_contents(public_path().'public/storage'.$safeName, $file);
-
-        //    //save new file path into db
-        //     // $userObj->profile_pic = $safeName;
-        // }
-
         return view('users.index', compact('users','users'));
     }
 

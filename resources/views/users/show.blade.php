@@ -19,7 +19,7 @@
         <dd>{{$user->gender}}</dd>
 
         <dt>Ảnh đại diện</dt>
-        <dd><img src="{{ url('public/storage/'.$user->avatar) }}"
+        <dd><img src="data:image/jpeg;base64,{{ $user->avatar }}"
  style="height: 100px; width: 150px;"></dd>
 
         <dt>Ngày sinh</dt>

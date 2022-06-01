@@ -77,7 +77,13 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
                     <td>{{$user->gender}}</td>
-                    <td><img src="{{ url('https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png') }}" style="height: 50px; width: 50px;"></td>
+                    <td>
+                        @if($user->avatar != null)
+                        <img src="data:image/jpeg;base64,{{ $user->avatar }}" style="height: 100px; width: 100px;">
+                        @else
+                       <img src="{{ url('https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png') }}" style="height: 50px; width: 50px;">
+                       @endif
+                    </td>
                     <td>{{$user->birthday}}</td>
                     <td>
                         <div class="d-flex">
