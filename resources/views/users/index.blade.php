@@ -21,13 +21,13 @@
 
     }
 
-    .btn-success {
+    .btn-info {
         color: #fff;
         background-color: #fac338;
         border-color: #fac338;
     }
 
-    .btn-success:hover {
+    .btn-info:hover {
         color: #fff;
         background-color: #eab42b;
         border-color: #eab42b;
@@ -77,7 +77,7 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
                     <td>{{$user->gender}}</td>
-                    <td><img src="{{ url('public/storage/'.$user->avatar) }}" style="height: 100px; width: 150px;"></td>
+                    <td><img src="{{ url('https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png') }}" style="height: 50px; width: 50px;"></td>
                     <td>{{$user->birthday}}</td>
                     <td>
                         <div class="d-flex">
@@ -91,11 +91,12 @@
                     <td>
                 </tr>
                 @endforeach
-              </tbody>
-            
+              </tbody>   
             </table>
         </div>
+        <div class="mt-4">{{$users->links()}}</div>
     </div>
+
 </div>
 @endsection
 @push('scripts')

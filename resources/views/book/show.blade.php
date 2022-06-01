@@ -13,7 +13,7 @@
         <dd>{{$book->tacGia}}</dd>
 
         <dt>Thể loại</dt>
-        <dd>{{$book->categories->tentheLoai}}</dd>
+        <dd>{{$book->categories->tenTheLoai}}</dd>
 
         <dt>Số lượng</dt>
         <dd>{{$book->soLuong}}</dd>
@@ -25,7 +25,7 @@
         <dd>{{$book->ngayXB}}</dd>
 
         <dt>Mô Tả</dt>
-        <dd>{{$book->moTa}}</dd>
+        <p>{{$book->moTa}}</p>
     </dl>
 
     <div class="d-flex">
@@ -34,8 +34,40 @@
         <form action="{{ route('book.destroy', $book->id) }}" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <button class="btn btn-danger ml-2"> Xoá Sách</button>
+            <button class="btn btn-danger ml-2 dltBtn"> Xoá Sách</button>
         </form>
     </div>
 </div>
 @endsection
+@push('scripts')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script>
+      $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+          $('.dltBtn').click(function(e){
+            var form=$(this).closest('form');
+              var dataID=$(this).data('id');
+              // alert(dataID);
+              e.preventDefault();
+              swal({
+                    title: "Bạn có muốn xóa?",
+                    text: "Khi xóa bạn sẽ không thể hồi phục lại dữ liệu",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                       form.submit();
+                    } else {
+                        swal("Dữ liệu của bạn vẫn an toàn!");
+                    }
+                });
+          })
+      })
+  </script>
+@endpush

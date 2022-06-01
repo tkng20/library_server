@@ -6,7 +6,6 @@
 
   }
   .float-right{
-    margin-bottom: 12px !important;
     padding: 10px  !important;
   }
   /* tr{
@@ -36,7 +35,7 @@
     border-color: #ffffff;
   }
 </style>
-<h1 class="display-6">Danh sách sách</h1>
+<h1 class="display-6" style="text-align:center">Các đầu sách</h1>
 <div class="card shadow mb-4">
 <div class="card-header">
       <a href="{{route('book.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Thêm sách"><i class="fas fa-plus"></i> Thêm sách</a>
@@ -56,7 +55,6 @@
         <th scope="col" style="width: 20%">Ngày XB</th>
         <th scope="col" style="width: 32%">Ảnh</td>
         <th scope="col" style="width: 20%">Thao tác</td>
-        <td></td>
     </tr>
   </thead>
   <tbody>
@@ -76,13 +74,18 @@
             <div class="d-flex">
                         <a href="{{route('book.show', $book->id)}}" class="btn btn-info btn-sm float-left mr-1" data-toggle="tooltip" title="detail" style="height:30px; width:30px;border-radius:50%"><i class="fas fa-eye"></i></a>
                         <a href="{{route('book.edit', $book->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                        <!-- <form method="POST" action="{{route('book.destroy', $book->id)}}"> -->
                         <form method="POST" action="{{route('book.destroy', $book->id)}}">
                         @csrf 
                         @method('delete')
-                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$book->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                          <button class="btn btn-danger btn-sm float-left mr-1 dltBtn" data-id={{$book->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
+                        <!-- @csrf 
+                        @method('delete')
+                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$book->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                        </form> -->
             </div>
-            <td>
+            </td>
         </tr>
     @endforeach
   </tbody>

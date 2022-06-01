@@ -73,7 +73,7 @@
     <div class="form-group">
     <label for="moTa">
     Mô tả:
-        <textarea class="form-control" rows="10" cols="100" name="moTa" form="usrform" spellcheck="false"></textarea>
+        <textarea  class="form-control" rows="10" cols="100" name="moTa" type="text" spellcheck="false"></textarea >
     </label>
     </div>
 

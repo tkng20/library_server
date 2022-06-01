@@ -3,6 +3,16 @@
 <div class="container-fluid ml-5">
 <h2>Chỉnh sửa thông tin độc giả</h2>
 
+@if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+
 <!-- Open the form with the store function route. -->
 {{ Form::open(['action' => ['UserAdminController@update', $user->id], 'method' => 'put']) }}
     <!-- Include the CRSF token -->

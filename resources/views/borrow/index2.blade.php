@@ -68,15 +68,15 @@ text-align:right;
                       <td>{{ $borrow->return_expect }}</td>
                       @if($borrow->status == "0")
                       <td class="btn btn-danger btn-sm float-left mr-1" style="text-align: center;
-    margin-left: 32px;">Mới đăng ký</td>
+    margin-left: 23px;">Mới đăng ký</td>
                       @endif
                       @if($borrow->status == "1")
                       <td class="btn btn-info btn-sm" style="text-align: center;
-    margin-left: 32px;">Đang mượn</td>
+    margin-left: 23px;">Đang mượn</td>
                       @endif
                       @if($borrow->status == "2")
                       <td class="btn-success btn-sm float-left mr-1" style="text-align: center;
-    margin-left: 32px; padding-left: 30px; padding-right: 25px;">Đã trả</td>
+    margin-left: 23px; padding-left: 30px; padding-right: 25px;">Đã trả</td>
                       @endif
                       <td>
                       <div class="d-flex" style="padding = 0px">

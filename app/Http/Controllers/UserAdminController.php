@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserAdminController extends Controller
 {
@@ -13,7 +14,18 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
+
+        // $file = base64_decode($request['avatar']);
+        //     $folderName = 'public/storage';
+        //     $safeName = str_random(10).'.'.'png';
+        //     $destinationPath = public_path() . $folderName;
+        //     file_put_contents(public_path().'public/storage'.$safeName, $file);
+
+        //    //save new file path into db
+        //     // $userObj->profile_pic = $safeName;
+        // }
+
         return view('users.index', compact('users','users'));
     }
 
@@ -47,7 +59,7 @@ class UserAdminController extends Controller
 
         $input = $request->all();
 
-        User::create($input);
+        User::create($input)->update(['password'=> Hash::make($request->password)]);
 
         return redirect()->route('users.index');
     }
@@ -89,10 +101,11 @@ class UserAdminController extends Controller
         $user = User::findOrFail($id);
 
         $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'age' => 'required|numeric',
-            'email' => 'required|email',
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
+            'birthday' => 'required|date|before:-12 years'
         ]);
 
         $input = $request->all();

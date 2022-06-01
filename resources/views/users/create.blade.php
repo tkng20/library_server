@@ -62,10 +62,9 @@
 
     <div class="form-group">
     <label>Ảnh đại diện</label>
-      <input type="file" required name="avatar">
+      <input type="file" name="avatar">
     </div>
       
-
     <div class="form-group">
     <label for="birthday">
     Ngày sinh:

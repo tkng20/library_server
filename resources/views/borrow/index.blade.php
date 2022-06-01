@@ -54,11 +54,6 @@
 <!-- Page Heading -->
 <h1 class="display-6">Danh sách mượn</h1>
 <div class="card shadow mb-4">
-    <div class="card-header">
-        <a href="{{route('borrow.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip"
-            data-placement="bottom" title="Thêm sách"><i class="fas fa-plus"></i> Thêm chi mượn</a>
-    </div>
-
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -83,15 +78,15 @@
                         <td>{{ $borrow->return_expect }}</td>
                         @if($borrow->status == "0")
                         <td class="btn btn-danger btn-sm float-left mr-1" style="text-align: center;
-margin-left: 32px;">Mới đăng ký</td>
+margin-left: 20px;">Mới đăng ký</td>
                         @endif
                         @if($borrow->status == "1")
                         <td class="btn btn-info btn-sm" style="text-align: center;
-margin-left: 32px;">Đang mượn</td>
+margin-left: 20px;">Đang mượn</td>
                         @endif
                         @if($borrow->status == "2")
                         <td class="btn-success btn-sm float-left mr-1" style="text-align: center;
-margin-left: 32px; padding-left: 30px; padding-right: 25px;">Đã trả</td>
+margin-left: 20px; padding-left: 30px; padding-right: 25px;">Đã trả</td>
                         @endif
                         <td>
                             <div class="d-flex" style="padding = 0px">
