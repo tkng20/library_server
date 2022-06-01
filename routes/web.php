@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'DashBoardAdimController@index');
-
 Auth::routes();
+Route::get('/', 'DashBoardAdimController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
